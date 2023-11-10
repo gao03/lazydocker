@@ -66,6 +66,9 @@ func (gui *Gui) getProjectPanel() *panels.SideListPanel[*commands.Project] {
 		Sort: func(a *commands.Project, b *commands.Project) bool {
 			return false
 		},
+		Hide: func() bool {
+			return true
+		},
 		GetTableCells: presentation.GetProjectDisplayStrings,
 		// It doesn't make sense to filter a list of only one item.
 		DisableFilter: true,

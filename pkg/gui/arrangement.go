@@ -178,7 +178,7 @@ func (gui *Gui) sidePanelChildren(width int, height int) []*boxlayout.Box {
 		return append([]*boxlayout.Box{
 			{
 				Window: sideWindowNames[0],
-				Size:   3,
+				Size:   5,
 			},
 		}, lo.Map(sideWindowNames[1:], func(window string, _ int) *boxlayout.Box {
 			return accordionBox(&boxlayout.Box{Window: window, Weight: 1})

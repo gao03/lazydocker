@@ -156,6 +156,30 @@ func (c *DockerCommand) CreateClientStatMonitor(container *Container) {
 	container.MonitoringStats = false
 }
 
+func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
+	cmd := exec.Command("docker", "context", "ls", "--format", "{{json .}}") //执行docker context ls --format "{{json .}}"
+	out, err := cmd.CombinedOutput()                                         //执行命令并获取输出
+	if err != nil {
+		return nil, err
+	}
+
+	lines := strings.Split(string(out), "\n") //将输出按行分割
+
+	var contexts []*DockerContext
+	for _, line := range lines {
+		if line == "" {
+			continue
+		}
+		var context DockerContext
+		err := json.Unmarshal([]byte(line), &context) //将每一行的json字符串解析为DockerContext对象
+		if err != nil {
+			return nil, err
+		}
+		contexts = append(contexts, &context) //将DockerContext对象添加到数组中
+	}
+	return contexts, nil
+}
+
 func (c *DockerCommand) RefreshContainersAndServices(currentServices []*Service, currentContainers []*Container) ([]*Container, []*Service, error) {
 	c.ServiceMutex.Lock()
 	defer c.ServiceMutex.Unlock()

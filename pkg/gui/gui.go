@@ -51,6 +51,7 @@ type Gui struct {
 }
 
 type Panels struct {
+	Contexts   *panels.SideListPanel[*commands.DockerContext]
 	Projects   *panels.SideListPanel[*commands.Project]
 	Services   *panels.SideListPanel[*commands.Service]
 	Containers *panels.SideListPanel[*commands.Container]
@@ -283,6 +284,7 @@ func (gui *Gui) Run() error {
 
 func (gui *Gui) setPanels() {
 	gui.Panels = Panels{
+		Contexts:   gui.getContextPanel(),
 		Projects:   gui.getProjectPanel(),
 		Services:   gui.getServicesPanel(),
 		Containers: gui.getContainersPanel(),
@@ -298,6 +300,11 @@ func (gui *Gui) updateContainerDetails() error {
 }
 
 func (gui *Gui) refresh() {
+	go func() {
+		if err := gui.refreshContexts(); err != nil {
+			gui.Log.Error(err)
+		}
+	}()
 	go func() {
 		if err := gui.refreshProject(); err != nil {
 			gui.Log.Error(err)

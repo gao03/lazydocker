@@ -357,6 +357,7 @@ func (gui *Gui) currentListPanel() (panels.ISideListPanel, bool) {
 
 func (gui *Gui) allSidePanels() []panels.ISideListPanel {
 	return []panels.ISideListPanel{
+		gui.Panels.Contexts,
 		gui.Panels.Projects,
 		gui.Panels.Services,
 		gui.Panels.Containers,
