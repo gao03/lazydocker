@@ -3,6 +3,7 @@ package gui
 import (
 	"fmt"
 
+	"github.com/jesseduffield/gocui"
 	"github.com/jesseduffield/lazydocker/pkg/commands"
 	"github.com/jesseduffield/lazydocker/pkg/gui/panels"
 	"github.com/jesseduffield/lazydocker/pkg/gui/presentation"
@@ -63,4 +64,12 @@ func (gui *Gui) refreshContexts() error {
 
 	gui.Panels.Contexts.SetItems(lst)
 	return gui.Panels.Contexts.RerenderList()
+}
+
+func (gui *Gui) handleContextUse(g *gocui.Gui, v *gocui.View) error {
+	ctx, err := gui.Panels.Contexts.GetSelectedItem()
+	if err != nil {
+		return err
+	}
+	return gui.ChangeDockerContext(ctx.Name)
 }

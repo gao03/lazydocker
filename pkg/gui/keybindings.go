@@ -263,6 +263,13 @@ func (gui *Gui) GetInitialKeybindings() []*Binding {
 			Description: gui.Tr.OpenInBrowser,
 		},
 		{
+			ViewName:    "contexts",
+			Key:         'u',
+			Modifier:    gocui.ModNone,
+			Handler:     gui.handleContextUse,
+			Description: "激活",
+		},
+		{
 			ViewName:    "services",
 			Key:         'u',
 			Modifier:    gocui.ModNone,

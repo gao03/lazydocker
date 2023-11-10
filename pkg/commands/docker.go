@@ -156,9 +156,18 @@ func (c *DockerCommand) CreateClientStatMonitor(container *Container) {
 	container.MonitoringStats = false
 }
 
+func (c *DockerCommand) UseContext(ctx string) error {
+	cmd := exec.Command("docker", "context", "use", ctx)
+	_, err := cmd.CombinedOutput()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
-	cmd := exec.Command("docker", "context", "ls", "--format", "{{json .}}") //执行docker context ls --format "{{json .}}"
-	out, err := cmd.CombinedOutput()                                         //执行命令并获取输出
+	cmd := exec.Command("docker", "context", "ls", "--format", "{{json .}}")
+	out, err := cmd.CombinedOutput()
 	if err != nil {
 		return nil, err
 	}

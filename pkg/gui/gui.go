@@ -161,6 +161,19 @@ func NewGui(log *logrus.Entry, dockerCommand *commands.DockerCommand, oSCommand 
 	return gui, nil
 }
 
+func (gui *Gui) ChangeDockerContext(ctx string) error {
+	err := gui.DockerCommand.UseContext(ctx)
+	if err != nil {
+		return err
+	}
+	cmd, err := commands.NewDockerCommand(gui.Log, gui.OSCommand, gui.Tr, gui.Config, gui.ErrorChan)
+	if err != nil {
+		return err
+	}
+	gui.DockerCommand = cmd
+	return nil
+}
+
 func (gui *Gui) renderGlobalOptions() error {
 	return gui.renderOptionsMap(map[string]string{
 		"PgUp/PgDn": gui.Tr.Scroll,

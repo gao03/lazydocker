@@ -30,9 +30,13 @@ func displayContainerImage(container *commands.Container) string {
 }
 
 func displayPorts(c *commands.Container) string {
-	portStrings := lo.Map(c.Container.Ports, func(port dockerTypes.Port, _ int) string {
+	ports := lo.Filter(c.Container.Ports, func(port dockerTypes.Port, _ int) bool {
+		return port.IP != "::"
+	})
+
+	portStrings := lo.Map(ports, func(port dockerTypes.Port, _ int) string {
 		if port.PublicPort == 0 {
-			return fmt.Sprintf("%d/%s", port.PrivatePort, port.Type)
+			return fmt.Sprintf("%d", port.PrivatePort)
 		}
 
 		// docker ps will show '0.0.0.0:80->80/tcp' but we'll show
@@ -42,7 +46,7 @@ func displayPorts(c *commands.Container) string {
 		if port.IP != "0.0.0.0" {
 			ipString = port.IP + ":"
 		}
-		return fmt.Sprintf("%s%d->%d/%s", ipString, port.PublicPort, port.PrivatePort, port.Type)
+		return fmt.Sprintf("%s%d->%d", ipString, port.PublicPort, port.PrivatePort)
 	})
 
 	// sorting because the order of the ports is not deterministic
