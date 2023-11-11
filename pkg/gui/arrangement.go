@@ -131,7 +131,7 @@ func (gui *Gui) infoSectionChildren(informationStr string, appStatus string) []*
 
 func (gui *Gui) sideViewNames() []string {
 	visibleSidePanels := lo.Filter(gui.allSidePanels(), func(panel panels.ISideListPanel, _ int) bool {
-		return !panel.IsHidden()
+		return !lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, panel.GetView().Name()) && !panel.IsHidden()
 	})
 
 	return lo.Map(visibleSidePanels, func(panel panels.ISideListPanel, _ int) string {
@@ -153,7 +153,7 @@ func (gui *Gui) sidePanelChildren(width int, height int) []*boxlayout.Box {
 			} else {
 				return &boxlayout.Box{
 					Window: window,
-					Size:   0,
+					Size:   gui.getPanelWidth(window),
 				}
 			}
 		}
@@ -173,6 +173,11 @@ func (gui *Gui) sidePanelChildren(width int, height int) []*boxlayout.Box {
 			}
 
 			return defaultBox
+		}
+		if accordionMode && currentWindow == sideWindowNames[0] {
+			return lo.Map(sideWindowNames, func(window string, _ int) *boxlayout.Box {
+				return accordionBox(&boxlayout.Box{Window: window, Weight: 1})
+			})
 		}
 
 		return append([]*boxlayout.Box{
@@ -206,5 +211,13 @@ func (gui *Gui) sidePanelChildren(width int, height int) []*boxlayout.Box {
 		return lo.Map(sideWindowNames, func(window string, _ int) *boxlayout.Box {
 			return squashedSidePanelBox(window)
 		})
+	}
+}
+
+func (gui *Gui) getPanelWidth(window string) int {
+	if v, ok := gui.Config.UserConfig.Gui.SidePanelWidthDetail[window]; ok {
+		return v
+	} else {
+		return 0
 	}
 }

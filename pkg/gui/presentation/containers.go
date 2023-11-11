@@ -20,7 +20,8 @@ func GetContainerDisplayStrings(guiConfig *config.GuiConfig, container *commands
 		getContainerDisplaySubstatus(guiConfig, container),
 		container.Name,
 		getDisplayCPUPerc(container),
-		utils.ColoredString(displayPorts(container), color.FgYellow),
+		getDisplayMemoryPerc(container),
+		utils.ColoredString(displayPorts(guiConfig, container), color.FgYellow),
 		utils.ColoredString(displayContainerImage(container), color.FgMagenta),
 	}
 }
@@ -29,10 +30,21 @@ func displayContainerImage(container *commands.Container) string {
 	return strings.TrimPrefix(container.Container.Image, "sha256:")
 }
 
-func displayPorts(c *commands.Container) string {
-	portStrings := lo.Map(c.Container.Ports, func(port dockerTypes.Port, _ int) string {
+func displayPorts(guiConfig *config.GuiConfig, c *commands.Container) string {
+	ports := c.Container.Ports
+	if guiConfig.MergeIp46BoardCast {
+		ports = lo.Filter(ports, func(port dockerTypes.Port, _ int) bool {
+			if port.IP != "::" {
+				return true;
+			}
+			return !lo.ContainsBy(ports, func(p dockerTypes.Port) bool {
+				return p.PublicPort == port.PublicPort && p.IP == "0.0.0.0"
+			})
+		})
+	}
+	portStrings := lo.Map(ports, func(port dockerTypes.Port, _ int) string {
 		if port.PublicPort == 0 {
-			return fmt.Sprintf("%d/%s", port.PrivatePort, port.Type)
+			return fmt.Sprintf("%d", port.PrivatePort)
 		}
 
 		// docker ps will show '0.0.0.0:80->80/tcp' but we'll show
@@ -42,7 +54,7 @@ func displayPorts(c *commands.Container) string {
 		if port.IP != "0.0.0.0" {
 			ipString = port.IP + ":"
 		}
-		return fmt.Sprintf("%s%d->%d/%s", ipString, port.PublicPort, port.PrivatePort, port.Type)
+		return fmt.Sprintf("%s%d->%d", ipString, port.PublicPort, port.PrivatePort)
 	})
 
 	// sorting because the order of the ports is not deterministic
@@ -154,13 +166,27 @@ func getHealthStatus(guiConfig *config.GuiConfig, c *commands.Container) string 
 
 // getDisplayCPUPerc colors the cpu percentage based on how extreme it is
 func getDisplayCPUPerc(c *commands.Container) string {
+	return getDisplayPerc(c, "CPU")
+}
+
+func getDisplayMemoryPerc(c *commands.Container) string {
+	return getDisplayPerc(c, "Memory")
+}
+
+func getDisplayPerc(c *commands.Container, tp string) string {
 	stats, ok := c.GetLastStats()
 	if !ok {
 		return ""
 	}
 
-	percentage := stats.DerivedStats.CPUPercentage
-	formattedPercentage := fmt.Sprintf("%.2f%%", stats.DerivedStats.CPUPercentage)
+	percentage := 0.0
+	if tp == "CPU" {
+		percentage = stats.DerivedStats.CPUPercentage
+	} else if tp == "Memory" {
+		percentage = stats.DerivedStats.MemoryPercentage
+	}
+
+	formattedPercentage := fmt.Sprintf("%.2f%%", percentage)
 
 	var clr color.Attribute
 	if percentage > 90 {

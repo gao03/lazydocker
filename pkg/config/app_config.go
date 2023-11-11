@@ -138,6 +138,12 @@ type GuiConfig struct {
 	// containers panel. "long": full words (default), "short": one or two characters,
 	// "icon": unicode emoji.
 	ContainerStatusHealthStyle string `yaml:"containerStatusHealthStyle"`
+
+	HideSidePanels []string `yaml:"hideSidePanels"`
+
+	MergeIp46BoardCast bool `yaml:"mergeIp46BoardCast"`
+
+	SidePanelWidthDetail map[string]int  `yaml:"sidePanelWidthDetail"`
 }
 
 // CommandTemplatesConfig determines what commands actually get called when we

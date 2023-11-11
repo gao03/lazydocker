@@ -27,12 +27,13 @@ func hideUnderScores() bool {
 
 type Views struct {
 	// side panels
-	Project    *gocui.View
-	Services   *gocui.View
-	Containers *gocui.View
-	Images     *gocui.View
-	Volumes    *gocui.View
-	Networks   *gocui.View
+	DockerContext *gocui.View
+	Project       *gocui.View
+	Services      *gocui.View
+	Containers    *gocui.View
+	Images        *gocui.View
+	Volumes       *gocui.View
+	Networks      *gocui.View
 
 	// main panel
 	Main *gocui.View
@@ -66,6 +67,7 @@ func (gui *Gui) orderedViewNameMappings() []viewNameMapping {
 	return []viewNameMapping{
 		// first layer. Ordering within this layer does not matter because there are
 		// no overlapping views
+		{viewPtr: &gui.Views.DockerContext, name: "contexts", autoPosition: true},
 		{viewPtr: &gui.Views.Project, name: "project", autoPosition: true},
 		{viewPtr: &gui.Views.Services, name: "services", autoPosition: true},
 		{viewPtr: &gui.Views.Containers, name: "containers", autoPosition: true},
@@ -108,6 +110,10 @@ func (gui *Gui) createAllViews() error {
 	gui.Views.Main.IgnoreCarriageReturns = true
 
 	gui.Views.Project.Title = gui.Tr.ProjectTitle
+
+	gui.Views.DockerContext.Title = "Contexts"
+	gui.Views.DockerContext.Highlight = true
+	gui.Views.DockerContext.SelBgColor = selectedLineBgColor
 
 	gui.Views.Services.Highlight = true
 	gui.Views.Services.Title = gui.Tr.ServicesTitle

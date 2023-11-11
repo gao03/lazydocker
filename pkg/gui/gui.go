@@ -7,6 +7,7 @@ import (
 	"time"
 
 	dockerTypes "github.com/docker/docker/api/types"
+	"github.com/samber/lo"
 
 	"github.com/go-errors/errors"
 
@@ -51,6 +52,7 @@ type Gui struct {
 }
 
 type Panels struct {
+	Contexts   *panels.SideListPanel[*commands.DockerContext]
 	Projects   *panels.SideListPanel[*commands.Project]
 	Services   *panels.SideListPanel[*commands.Service]
 	Containers *panels.SideListPanel[*commands.Container]
@@ -158,6 +160,19 @@ func NewGui(log *logrus.Entry, dockerCommand *commands.DockerCommand, oSCommand 
 	deadlock.Opts.DeadlockTimeout = 10 * time.Second
 
 	return gui, nil
+}
+
+func (gui *Gui) ChangeDockerContext(ctx string) error {
+	err := gui.DockerCommand.UseContext(ctx)
+	if err != nil {
+		return err
+	}
+	cmd, err := commands.NewDockerCommand(gui.Log, gui.OSCommand, gui.Tr, gui.Config, gui.ErrorChan)
+	if err != nil {
+		return err
+	}
+	gui.DockerCommand = cmd
+	return nil
 }
 
 func (gui *Gui) renderGlobalOptions() error {
@@ -283,6 +298,7 @@ func (gui *Gui) Run() error {
 
 func (gui *Gui) setPanels() {
 	gui.Panels = Panels{
+		Contexts:   gui.getContextPanel(),
 		Projects:   gui.getProjectPanel(),
 		Services:   gui.getServicesPanel(),
 		Containers: gui.getContainersPanel(),
@@ -298,6 +314,11 @@ func (gui *Gui) updateContainerDetails() error {
 }
 
 func (gui *Gui) refresh() {
+	go func() {
+		if err := gui.refreshContexts(); err != nil {
+			gui.Log.Error(err)
+		}
+	}()
 	go func() {
 		if err := gui.refreshProject(); err != nil {
 			gui.Log.Error(err)
@@ -462,9 +483,21 @@ func (gui *Gui) ShouldRefresh(key string) bool {
 
 func (gui *Gui) initiallyFocusedViewName() string {
 	if gui.DockerCommand.InDockerComposeProject {
-		return "services"
+		if (!lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "services")) {
+			return "services"
+		}
 	}
-	return "containers"
+	if (!lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "containers")) {
+		return "containers"
+	}
+	sideViews := gui.sideViewNames()
+	if len(sideViews) > 0 {
+		return sideViews[0];
+	}
+
+	gui.Log.Fatal("visible side views is empty")
+	os.Exit(-1);
+	return ""
 }
 
 func (gui *Gui) IgnoreStrings() []string {
