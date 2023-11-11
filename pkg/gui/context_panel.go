@@ -40,9 +40,9 @@ func (gui *Gui) getContextPanel() *panels.SideListPanel[*commands.DockerContext]
 		GetTableCells: presentation.GetContextDisplayStrings,
 		DisableFilter: true,
 		OnClick: func(ctx *commands.DockerContext) error {
-			return gui.createConfirmationPanel(gui.Tr.Confirm, "确定要激活 Context: " + ctx.Name + "吗?", func(g *gocui.Gui, v *gocui.View) error {
+			return gui.createConfirmationPanel(gui.Tr.Confirm, "确定要激活 Context: "+ctx.Name+"吗?", func(g *gocui.Gui, v *gocui.View) error {
 				return gui.WithWaitingStatus(gui.Tr.StartingStatus, func() error {
-					return  gui.ChangeDockerContext(ctx.Name)
+					return gui.ChangeDockerContext(ctx.Name)
 				})
 			}, nil)
 		},
@@ -62,7 +62,6 @@ func (gui *Gui) refreshContexts() error {
 	}
 
 	lst, err := gui.DockerCommand.GetAllContexts()
-
 	if err != nil {
 		return err
 	}

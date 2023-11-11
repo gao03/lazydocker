@@ -143,7 +143,7 @@ type GuiConfig struct {
 
 	MergeIp46BoardCast bool `yaml:"mergeIp46BoardCast"`
 
-	SidePanelWidthDetail map[string]int  `yaml:"sidePanelWidthDetail"`
+	SidePanelWidthDetail map[string]int `yaml:"sidePanelWidthDetail"`
 }
 
 // CommandTemplatesConfig determines what commands actually get called when we

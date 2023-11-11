@@ -483,20 +483,20 @@ func (gui *Gui) ShouldRefresh(key string) bool {
 
 func (gui *Gui) initiallyFocusedViewName() string {
 	if gui.DockerCommand.InDockerComposeProject {
-		if (!lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "services")) {
+		if !lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "services") {
 			return "services"
 		}
 	}
-	if (!lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "containers")) {
+	if !lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "containers") {
 		return "containers"
 	}
 	sideViews := gui.sideViewNames()
 	if len(sideViews) > 0 {
-		return sideViews[0];
+		return sideViews[0]
 	}
 
 	gui.Log.Fatal("visible side views is empty")
-	os.Exit(-1);
+	os.Exit(-1)
 	return ""
 }
 

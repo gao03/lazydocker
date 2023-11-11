@@ -35,7 +35,7 @@ func displayPorts(guiConfig *config.GuiConfig, c *commands.Container) string {
 	if guiConfig.MergeIp46BoardCast {
 		ports = lo.Filter(ports, func(port dockerTypes.Port, _ int) bool {
 			if port.IP != "::" {
-				return true;
+				return true
 			}
 			return !lo.ContainsBy(ports, func(p dockerTypes.Port) bool {
 				return p.PublicPort == port.PublicPort && p.IP == "0.0.0.0"
