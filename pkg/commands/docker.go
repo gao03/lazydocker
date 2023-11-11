@@ -174,7 +174,7 @@ func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
 
 	lines := strings.Split(string(out), "\n") 
 
-	var contexts []*DockerContext
+	contexts := make([]*DockerContext, 0, len(lines))
 	for _, line := range lines {
 		if line == "" {
 			continue
@@ -184,7 +184,7 @@ func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
 		if err != nil {
 			return nil, err
 		}
-		contexts = append(contexts, &context) 
+		contexts = append(contexts, &context)
 	}
 	return contexts, nil
 }
