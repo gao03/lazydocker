@@ -58,7 +58,6 @@ func (gui *Gui) renderDockerContext(dc *commands.DockerContext) tasks.TaskFunc {
 
 func (gui *Gui) refreshContexts() error {
 	if gui.Views.DockerContext == nil {
-		// if the containersView hasn't been instantiated yet we just return
 		return nil
 	}
 
