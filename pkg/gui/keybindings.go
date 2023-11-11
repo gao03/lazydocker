@@ -270,6 +270,20 @@ func (gui *Gui) GetInitialKeybindings() []*Binding {
 			Description: "激活",
 		},
 		{
+			ViewName:    "contexts",
+			Key:         'e',
+			Modifier:    gocui.ModNone,
+			Handler:     gui.handleEditConfig,
+			Description: gui.Tr.EditConfig,
+		},
+		{
+			ViewName:    "contexts",
+			Key:         'o',
+			Modifier:    gocui.ModNone,
+			Handler:     gui.handleOpenConfig,
+			Description: gui.Tr.OpenConfig,
+		},
+		{
 			ViewName:    "services",
 			Key:         'u',
 			Modifier:    gocui.ModNone,

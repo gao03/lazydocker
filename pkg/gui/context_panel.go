@@ -22,8 +22,8 @@ func (gui *Gui) getContextPanel() *panels.SideListPanel[*commands.DockerContext]
 					},
 				}
 			},
-			GetItemContextCacheKey: func(project *commands.DockerContext) string {
-				return "context:" + project.Name
+			GetItemContextCacheKey: func(ctx *commands.DockerContext) string {
+				return "context:" + ctx.Name
 			},
 		},
 
@@ -35,11 +35,17 @@ func (gui *Gui) getContextPanel() *panels.SideListPanel[*commands.DockerContext]
 		Gui:            gui.intoInterface(),
 
 		Sort: func(a *commands.DockerContext, b *commands.DockerContext) bool {
-			return false
+			return a.Current
 		},
 		GetTableCells: presentation.GetContextDisplayStrings,
-		// It doesn't make sense to filter a list of only one item.
 		DisableFilter: true,
+		OnClick: func(ctx *commands.DockerContext) error {
+			return gui.createConfirmationPanel(gui.Tr.Confirm, "确定要激活 Context: " + ctx.Name + "吗?", func(g *gocui.Gui, v *gocui.View) error {
+				return gui.WithWaitingStatus(gui.Tr.StartingStatus, func() error {
+					return  gui.ChangeDockerContext(ctx.Name)
+				})
+			}, nil)
+		},
 	}
 }
 

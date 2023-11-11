@@ -106,6 +106,14 @@ func (gui *Gui) refreshStateImages() error {
 		return err
 	}
 
+	// 如果 Image Name 包含域名，就把域名去掉
+	images = lo.Map(images, func(img *commands.Image, _ int) *commands.Image  {
+		if strings.Count(img.Name, "/") == 2{
+			img.Name = strings.SplitN(img.Name, "/", 2)[1]
+		}
+		return img;
+	})
+
 	gui.Panels.Images.SetItems(images)
 
 	return nil

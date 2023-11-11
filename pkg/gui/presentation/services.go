@@ -37,7 +37,7 @@ func GetServiceDisplayStrings(guiConfig *config.GuiConfig, service *commands.Ser
 		getContainerDisplaySubstatus(guiConfig, container),
 		service.Name,
 		getDisplayCPUPerc(container),
-		utils.ColoredString(displayPorts(container), color.FgYellow),
+		utils.ColoredString(displayPorts(guiConfig, container), color.FgYellow),
 		utils.ColoredString(displayContainerImage(container), color.FgMagenta),
 	}
 }

@@ -2,11 +2,13 @@ package gui
 
 import (
 	"context"
+	"log"
 	"os"
 	"strings"
 	"time"
 
 	dockerTypes "github.com/docker/docker/api/types"
+	"github.com/samber/lo"
 
 	"github.com/go-errors/errors"
 
@@ -482,9 +484,21 @@ func (gui *Gui) ShouldRefresh(key string) bool {
 
 func (gui *Gui) initiallyFocusedViewName() string {
 	if gui.DockerCommand.InDockerComposeProject {
-		return "services"
+		if (!lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "services")) {
+			return "services"
+		}
 	}
-	return "containers"
+	if (!lo.Contains(gui.Config.UserConfig.Gui.HideSidePanels, "containers")) {
+		return "containers"
+	}
+	sideViews := gui.sideViewNames()
+	if len(sideViews) > 0 {
+		return sideViews[0];
+	}
+
+	log.Fatal("visible side views is empty")
+	os.Exit(-1);
+	return ""
 }
 
 func (gui *Gui) IgnoreStrings() []string {
