@@ -172,7 +172,7 @@ func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
 		return nil, err
 	}
 
-	lines := strings.Split(string(out), "\n") 
+	lines := strings.Split(string(out), "\n")
 
 	contexts := make([]*DockerContext, 0, len(lines))
 	for _, line := range lines {
@@ -180,7 +180,7 @@ func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
 			continue
 		}
 		var context DockerContext
-		err := json.Unmarshal([]byte(line), &context) 
+		err := json.Unmarshal([]byte(line), &context)
 		if err != nil {
 			return nil, err
 		}
