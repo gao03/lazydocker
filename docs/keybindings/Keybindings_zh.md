@@ -33,6 +33,17 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
   <kbd>/</kbd>: 过滤列表
 </pre>
 
+## 
+
+<pre>
+  <kbd>u</kbd>: 激活
+  <kbd>e</kbd>: 编辑lazydocker配置
+  <kbd>o</kbd>: 打开lazydocker配置
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+</pre>
+
 ## 服务
 
 <pre>

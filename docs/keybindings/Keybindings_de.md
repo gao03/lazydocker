@@ -1,107 +1,118 @@
 _This file is auto-generated. To update, make the changes in the pkg/i18n directory and then run `go run scripts/cheatsheet/main.go generate` from the project root._
 
-# Lazydocker menü
+# Lazydocker 菜单
 
-## Projekt
+## 项目
 
 <pre>
-  <kbd>e</kbd>: bearbeite lazydocker Konfiguration
-  <kbd>o</kbd>: öffne lazydocker Konfiguration
-  <kbd>m</kbd>: zeige Protokolle
-  <kbd>enter</kbd>: fokussieren aufs Hauptpanel
-  <kbd>[</kbd>: vorheriges Tab
-  <kbd>]</kbd>: nächstes Tab
+  <kbd>e</kbd>: 编辑lazydocker配置
+  <kbd>o</kbd>: 打开lazydocker配置
+  <kbd>m</kbd>: 查看日志
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
 </pre>
 
-## Container
+## 容器
 
 <pre>
-  <kbd>d</kbd>: entfernen
-  <kbd>e</kbd>: hide/show stopped containers
-  <kbd>p</kbd>: pause
-  <kbd>s</kbd>: anhalten
-  <kbd>r</kbd>: neustarten
-  <kbd>a</kbd>: anbinden
-  <kbd>m</kbd>: zeige Protokolle
-  <kbd>E</kbd>: exec shell
-  <kbd>c</kbd>: führe vordefinierten benutzerdefinierten Befehl aus
-  <kbd>b</kbd>: view bulk commands
-  <kbd>w</kbd>: open in browser (first port is http)
-  <kbd>enter</kbd>: fokussieren aufs Hauptpanel
-  <kbd>[</kbd>: vorheriges Tab
-  <kbd>]</kbd>: nächstes Tab
-  <kbd>/</kbd>: filter list
+  <kbd>d</kbd>: 移除
+  <kbd>e</kbd>: 隐藏/显示已停止的容器
+  <kbd>p</kbd>: 暂停
+  <kbd>s</kbd>: 停止
+  <kbd>r</kbd>: 重新启动
+  <kbd>a</kbd>: attach
+  <kbd>m</kbd>: 查看日志
+  <kbd>E</kbd>: 执行shell
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>w</kbd>: 在浏览器中打开(第一个端口为http)
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Dienste
+## 
 
 <pre>
-  <kbd>u</kbd>: up service
-  <kbd>d</kbd>: entferne Container
-  <kbd>s</kbd>: anhalten
-  <kbd>p</kbd>: pause
-  <kbd>r</kbd>: neustarten
-  <kbd>S</kbd>: start
-  <kbd>a</kbd>: anbinden
-  <kbd>m</kbd>: zeige Protokolle
-  <kbd>U</kbd>: up project
-  <kbd>D</kbd>: down project
-  <kbd>R</kbd>: zeige Neustartoptionen
-  <kbd>c</kbd>: führe vordefinierten benutzerdefinierten Befehl aus
-  <kbd>b</kbd>: view bulk commands
-  <kbd>E</kbd>: exec shell
-  <kbd>w</kbd>: open in browser (first port is http)
-  <kbd>enter</kbd>: fokussieren aufs Hauptpanel
-  <kbd>[</kbd>: vorheriges Tab
-  <kbd>]</kbd>: nächstes Tab
-  <kbd>/</kbd>: filter list
+  <kbd>u</kbd>: 激活
+  <kbd>e</kbd>: 编辑lazydocker配置
+  <kbd>o</kbd>: 打开lazydocker配置
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
 </pre>
 
-## Images
+## 服务
 
 <pre>
-  <kbd>c</kbd>: führe vordefinierten benutzerdefinierten Befehl aus
-  <kbd>d</kbd>: entferne Image
-  <kbd>b</kbd>: view bulk commands
-  <kbd>enter</kbd>: fokussieren aufs Hauptpanel
-  <kbd>[</kbd>: vorheriges Tab
-  <kbd>]</kbd>: nächstes Tab
-  <kbd>/</kbd>: filter list
+  <kbd>u</kbd>: 启动服务
+  <kbd>d</kbd>: 移除容器
+  <kbd>s</kbd>: 停止
+  <kbd>p</kbd>: 暂停
+  <kbd>r</kbd>: 重新启动
+  <kbd>S</kbd>: 启动项目
+  <kbd>a</kbd>: attach
+  <kbd>m</kbd>: 查看日志
+  <kbd>U</kbd>: 创建并启动容器
+  <kbd>D</kbd>: 停止并移除容器
+  <kbd>R</kbd>: 查看重启选项
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>E</kbd>: 执行shell
+  <kbd>w</kbd>: 在浏览器中打开(第一个端口为http)
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Volumes
+## 镜像
 
 <pre>
-  <kbd>c</kbd>: führe vordefinierten benutzerdefinierten Befehl aus
-  <kbd>d</kbd>: entferne Volume
-  <kbd>b</kbd>: view bulk commands
-  <kbd>enter</kbd>: fokussieren aufs Hauptpanel
-  <kbd>[</kbd>: vorheriges Tab
-  <kbd>]</kbd>: nächstes Tab
-  <kbd>/</kbd>: filter list
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>d</kbd>: 移除镜像
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Netzwerk
+## 卷
 
 <pre>
-  <kbd>c</kbd>: führe vordefinierten benutzerdefinierten Befehl aus
-  <kbd>d</kbd>: entferne Netzwerk
-  <kbd>b</kbd>: view bulk commands
-  <kbd>enter</kbd>: fokussieren aufs Hauptpanel
-  <kbd>[</kbd>: vorheriges Tab
-  <kbd>]</kbd>: nächstes Tab
-  <kbd>/</kbd>: filter list
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>d</kbd>: 移除卷
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Haupt
+## 网络
 
 <pre>
-  <kbd>esc</kbd>: zurück
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>d</kbd>: 移除网络
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Global
+## 主要
 
 <pre>
-  <kbd>+</kbd>: next screen mode (normal/half/fullscreen)
-  <kbd>_</kbd>: prev screen mode
+  <kbd>esc</kbd>: 返回
+</pre>
+
+## 全局
+
+<pre>
+  <kbd>+</kbd>: 下一个屏幕模式（正常/半屏/全屏）
+  <kbd>_</kbd>: 上一个屏幕模式
 </pre>

@@ -1,107 +1,118 @@
 _This file is auto-generated. To update, make the changes in the pkg/i18n directory and then run `go run scripts/cheatsheet/main.go generate` from the project root._
 
-# Lazydocker menú
+# Lazydocker 菜单
 
-## Proyecto
+## 项目
 
 <pre>
-  <kbd>e</kbd>: editar configuración de lazydocker
-  <kbd>o</kbd>: abrir configuración de lazydocker
-  <kbd>m</kbd>: ver logs
-  <kbd>enter</kbd>: enfocar panel principal
-  <kbd>[</kbd>: anterior pestaña
-  <kbd>]</kbd>: siguiente pestaña
+  <kbd>e</kbd>: 编辑lazydocker配置
+  <kbd>o</kbd>: 打开lazydocker配置
+  <kbd>m</kbd>: 查看日志
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
 </pre>
 
-## Contenedores
+## 容器
 
 <pre>
-  <kbd>d</kbd>: borrar
-  <kbd>e</kbd>: esconder/mostrar contenedores parados
-  <kbd>p</kbd>: pausa
-  <kbd>s</kbd>: parar
-  <kbd>r</kbd>: reiniciar
+  <kbd>d</kbd>: 移除
+  <kbd>e</kbd>: 隐藏/显示已停止的容器
+  <kbd>p</kbd>: 暂停
+  <kbd>s</kbd>: 停止
+  <kbd>r</kbd>: 重新启动
   <kbd>a</kbd>: attach
-  <kbd>m</kbd>: ver logs
-  <kbd>E</kbd>: ejecutar shell
-  <kbd>c</kbd>: ejecutar comando personalizado
-  <kbd>b</kbd>: ver comandos masivos
-  <kbd>w</kbd>: abrir en navegador (first port is http)
-  <kbd>enter</kbd>: enfocar panel principal
-  <kbd>[</kbd>: anterior pestaña
-  <kbd>]</kbd>: siguiente pestaña
-  <kbd>/</kbd>: filtrar lista
+  <kbd>m</kbd>: 查看日志
+  <kbd>E</kbd>: 执行shell
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>w</kbd>: 在浏览器中打开(第一个端口为http)
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Servicios
+## 
 
 <pre>
-  <kbd>u</kbd>: levantar servicio
-  <kbd>d</kbd>: borrar contenedores
-  <kbd>s</kbd>: parar
-  <kbd>p</kbd>: pausa
-  <kbd>r</kbd>: reiniciar
-  <kbd>S</kbd>: iniciar
+  <kbd>u</kbd>: 激活
+  <kbd>e</kbd>: 编辑lazydocker配置
+  <kbd>o</kbd>: 打开lazydocker配置
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+</pre>
+
+## 服务
+
+<pre>
+  <kbd>u</kbd>: 启动服务
+  <kbd>d</kbd>: 移除容器
+  <kbd>s</kbd>: 停止
+  <kbd>p</kbd>: 暂停
+  <kbd>r</kbd>: 重新启动
+  <kbd>S</kbd>: 启动项目
   <kbd>a</kbd>: attach
-  <kbd>m</kbd>: ver logs
-  <kbd>U</kbd>: levantar proyecto
-  <kbd>D</kbd>: dar de baja el proyecto
-  <kbd>R</kbd>: ver opciones de reinicio
-  <kbd>c</kbd>: ejecutar comando personalizado
-  <kbd>b</kbd>: ver comandos masivos
-  <kbd>E</kbd>: ejecutar shell
-  <kbd>w</kbd>: abrir en navegador (first port is http)
-  <kbd>enter</kbd>: enfocar panel principal
-  <kbd>[</kbd>: anterior pestaña
-  <kbd>]</kbd>: siguiente pestaña
-  <kbd>/</kbd>: filtrar lista
+  <kbd>m</kbd>: 查看日志
+  <kbd>U</kbd>: 创建并启动容器
+  <kbd>D</kbd>: 停止并移除容器
+  <kbd>R</kbd>: 查看重启选项
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>E</kbd>: 执行shell
+  <kbd>w</kbd>: 在浏览器中打开(第一个端口为http)
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Imágenes
+## 镜像
 
 <pre>
-  <kbd>c</kbd>: ejecutar comando personalizado
-  <kbd>d</kbd>: limpiar imagen
-  <kbd>b</kbd>: ver comandos masivos
-  <kbd>enter</kbd>: enfocar panel principal
-  <kbd>[</kbd>: anterior pestaña
-  <kbd>]</kbd>: siguiente pestaña
-  <kbd>/</kbd>: filtrar lista
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>d</kbd>: 移除镜像
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Volúmenes
+## 卷
 
 <pre>
-  <kbd>c</kbd>: ejecutar comando personalizado
-  <kbd>d</kbd>: limpiar volúmen
-  <kbd>b</kbd>: ver comandos masivos
-  <kbd>enter</kbd>: enfocar panel principal
-  <kbd>[</kbd>: anterior pestaña
-  <kbd>]</kbd>: siguiente pestaña
-  <kbd>/</kbd>: filtrar lista
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>d</kbd>: 移除卷
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Redes
+## 网络
 
 <pre>
-  <kbd>c</kbd>: ejecutar comando personalizado
-  <kbd>d</kbd>: limpiar red
-  <kbd>b</kbd>: ver comandos masivos
-  <kbd>enter</kbd>: enfocar panel principal
-  <kbd>[</kbd>: anterior pestaña
-  <kbd>]</kbd>: siguiente pestaña
-  <kbd>/</kbd>: filtrar lista
+  <kbd>c</kbd>: 运行预定义的自定义命令
+  <kbd>d</kbd>: 移除网络
+  <kbd>b</kbd>: 查看批量命令
+  <kbd>enter</kbd>: 聚焦主面板
+  <kbd>[</kbd>: 上一个选项卡
+  <kbd>]</kbd>: 下一个选项卡
+  <kbd>/</kbd>: 过滤列表
 </pre>
 
-## Inicio
+## 主要
 
 <pre>
-  <kbd>esc</kbd>: regresar
+  <kbd>esc</kbd>: 返回
 </pre>
 
-## Global
+## 全局
 
 <pre>
-  <kbd>+</kbd>: next screen mode (normal/half/fullscreen)
-  <kbd>_</kbd>: prev screen mode
+  <kbd>+</kbd>: 下一个屏幕模式（正常/半屏/全屏）
+  <kbd>_</kbd>: 上一个屏幕模式
 </pre>
