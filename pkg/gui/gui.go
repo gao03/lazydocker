@@ -2,7 +2,6 @@ package gui
 
 import (
 	"context"
-	"log"
 	"os"
 	"strings"
 	"time"
@@ -496,7 +495,7 @@ func (gui *Gui) initiallyFocusedViewName() string {
 		return sideViews[0];
 	}
 
-	log.Fatal("visible side views is empty")
+	gui.Log.Fatal("visible side views is empty")
 	os.Exit(-1);
 	return ""
 }

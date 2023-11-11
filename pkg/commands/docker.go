@@ -172,7 +172,7 @@ func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
 		return nil, err
 	}
 
-	lines := strings.Split(string(out), "\n") //将输出按行分割
+	lines := strings.Split(string(out), "\n") 
 
 	var contexts []*DockerContext
 	for _, line := range lines {
@@ -180,11 +180,11 @@ func (c *DockerCommand) GetAllContexts() ([]*DockerContext, error) {
 			continue
 		}
 		var context DockerContext
-		err := json.Unmarshal([]byte(line), &context) //将每一行的json字符串解析为DockerContext对象
+		err := json.Unmarshal([]byte(line), &context) 
 		if err != nil {
 			return nil, err
 		}
-		contexts = append(contexts, &context) //将DockerContext对象添加到数组中
+		contexts = append(contexts, &context) 
 	}
 	return contexts, nil
 }
